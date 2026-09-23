@@ -3,10 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HoloNet — Histoire du Corps d'Armée</title>
-  <meta name="description" content="Terminal d'accès aux bases de données de la République Galactique. Histoire du Corps d'Armée et Formation Cadet.">
+  <title>Réseau Impérial — Histoire du Corps d'Armée</title>
+  <meta name="description" content="Terminal d'accès aux bases de données de l'Empire Galactique. Histoire du Corps d'Armée.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="images/ICONE.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Réseau Impérial — Histoire du Corps d'Armée">
+  <meta property="og:description" content="Histoire du Corps d'Armée de l'Empire.">
+  <meta property="og:url" content="https://insanity-chan.github.io/Imperial/histoire.html">
+  <meta property="og:image" content="https://insanity-chan.github.io/Imperial/preview.png">
+  <meta property="og:site_name" content="Réseau Impérial">
+  <meta name="theme-color" content="#ff1a1a">
 
   <style>
     .holo-timeline {
@@ -82,7 +90,7 @@
       height: 200px;
       object-fit: cover;
       border: 1px solid var(--holo-dim);
-      background: rgba(0, 8, 20, 0.5);
+      background: rgba(5, 5, 5, 0.5);
       display: block;
       margin-bottom: 15px;
       transition: all 0.3s;
@@ -104,8 +112,9 @@
 
     .holo-event-text {
       line-height: 1.8;
-      opacity: 0.85;
+      opacity: 0.9;
       font-size: 0.9rem;
+      color: var(--text-white);
     }
 
     .holo-event-text p {
@@ -115,11 +124,12 @@
     .holo-intro-banner {
       padding: 20px;
       border: 1px solid var(--holo-dim);
-      background: rgba(0, 26, 51, 0.3);
+      background: rgba(26, 0, 0, 0.3);
       margin-bottom: 30px;
       line-height: 1.8;
       font-size: 0.9rem;
       opacity: 0.9;
+      color: var(--text-white);
     }
 
     .holo-intro-banner p {
@@ -160,8 +170,8 @@
 <body>
 
   <div id="boot-screen">
-    <div class="boot-text">&gt; INITIALISATION DU TERMINAL HOLONET...</div>
-    <div class="boot-text">&gt; CONNEXION AU RÉSEAU DE LA RÉPUBLIQUE...</div>
+    <div class="boot-text">&gt; INITIALISATION DU TERMINAL IMPÉRIAL...</div>
+    <div class="boot-text">&gt; CONNEXION AU RÉSEAU DE L'EMPIRE...</div>
     <div class="boot-text">&gt; CHARGEMENT : ARCHIVES HISTORIQUES...</div>
     <div class="boot-bar"><div class="boot-bar-fill"></div></div>
   </div>
@@ -175,82 +185,54 @@
 
     <div class="holo-nav">
       <a href="index.html"><button>Accueil</button></a>
-      <a href="histoir.html"><button>Histoire du Corps</button></a>
+      <a href="histoir.html"><button class="active">Histoire du Corps</button></a>
       <a href="formation.html"><button>Formation Cadet</button></a>
-      <a href="unites.html"><button>Unités & Code Millitaire</button></a>
+      <a href="unites.html"><button>Unités, Alertes & Décorations</button></a>
       <a href="sphere.html"><button>Sphère</button></a>
       <a href="effectif.html"><button>Effectif</button></a>
     </div>
 
+    <!-- INTRODUCTION (VIDE — À REMPLIR) -->
     <div class="holo-panel active">
       <h2>Origines du Régiment</h2>
       <div class="holo-intro-banner">
-        <p>Né en 10 Après le Traité de Coruscant, le Régiment de Coruscant trouve ses racines dans une petite compagnie fondée à l'époque par la jeune Capitaine Hestia Elrona, tout juste sortie de l'académie militaire. À ses débuts, l'unité portait simplement le nom de sa planète de garnison principale.</p>
-        <p>D'abord détachée sur Tython pour participer à la formation des nouvelles recrues de l'armée républicaine, la compagnie a su s'illustrer par sa rigueur, son efficacité tactique et la cohésion de ses troupes.</p>
-        <p>Désormais un Corps d'Armée, cet ensemble de femmes et d'hommes combattent sous la direction de son successeurs, le Commandant Alexei Krukov.</p>
+        <p>[TEXTE D'INTRODUCTION À AJOUTER]</p>
       </div>
     </div>
 
+    <!-- TIMELINE (VIDE — À REMPLIR) -->
     <div class="holo-timeline">
 
+      <!-- ÉVÉNEMENT 1 — À REMPLIR -->
       <div class="holo-event">
-        <div class="holo-event-year">10 ATC</div>
-        <div class="holo-event-title">Campagne de Vogel</div>
-        <img class="holo-event-image" src="images/histoire/vogel.png" alt="Campagne de Vogel"
+        <div class="holo-event-year">[ANNÉE]</div>
+        <div class="holo-event-title">[TITRE DE L'ÉVÉNEMENT]</div>
+        <img class="holo-event-image" src="images/histoire/[nom-image].png" alt="[TITRE]"
              onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image à ajouter'">
         <div class="holo-event-text">
-          <p>Le front de Vogel fut un des premiers théâtres d'opération du Régiment de Coruscant. Engagé dans une série de combats urbains intenses, le régiment mena des opérations conjointes avec le Maître Kromro et plusieurs Jedi dépêchés sur place pour soutenir la contre-offensive républicaine.</p>
-          <p>Les Jedi, en coordination avec les unités terrestres du régiment, permirent de reprendre plusieurs quartiers stratégiques d'une des villes sur la ligne de front et d'endiguer les forces impériales dans des zones à haute densité civile.</p>
+          <p>[TEXTE DE L'ÉVÉNEMENT À AJOUTER]</p>
         </div>
       </div>
 
+      <!-- ÉVÉNEMENT 2 — À REMPLIR -->
       <div class="holo-event">
-        <div class="holo-event-year">11 ATC</div>
-        <div class="holo-event-title">Opérations sur Balmorra</div>
-        <img class="holo-event-image" src="images/histoire/balmorra.png" alt="Opérations sur Balmorra"
+        <div class="holo-event-year">[ANNÉE]</div>
+        <div class="holo-event-title">[TITRE DE L'ÉVÉNEMENT]</div>
+        <img class="holo-event-image" src="images/histoire/[nom-image].png" alt="[TITRE]"
              onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image à ajouter'">
         <div class="holo-event-text">
-          <p>Actuellement, le Régiment de Coruscant est engagé sur Balmorra, théâtre d'opérations majeures dans la guerre de reconquête républicaine.</p>
-          <p>Après plusieurs mois de combats, le régiment a pris part à l'assaut de l'usine de Sobrik, un complexe industriel vital utilisé par les forces impériales pour la production d'armement lourd.</p>
-          <p>Cette opération, menée en coordination étroite avec un contingent Jedi, fut une victoire décisive : la neutralisation des défenses automatiques, suivie d'un assaut combiné blindé et Jedi, permit de sécuriser entièrement le site.</p>
-          <p>Les Jedi ont agi aux côtés des compagnies d'assaut du Régiment, menant les troupes à travers les lignes ennemies dans une démonstration de force et de cohésion.</p>
+          <p>[TEXTE DE L'ÉVÉNEMENT À AJOUTER]</p>
         </div>
       </div>
 
+      <!-- ÉVÉNEMENT 3 — À REMPLIR -->
       <div class="holo-event">
-        <div class="holo-event-year">12 ATC</div>
-        <div class="holo-event-title">L'assaut de la base de l'Œil d'Azalus</div>
-        <img class="holo-event-image" src="images/histoire/azalus.png" alt="Assaut de l'Œil d'Azalus"
+        <div class="holo-event-year">[ANNÉE]</div>
+        <div class="holo-event-title">[TITRE DE L'ÉVÉNEMENT]</div>
+        <img class="holo-event-image" src="images/histoire/[nom-image].png" alt="[TITRE]"
              onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image à ajouter'">
         <div class="holo-event-text">
-          <p>Le Sergent-Chef Sneed Reeves du Régiment de Coruscant fut capturé par l'organisation criminelle connue sous le nom de l'Œil d'Azalus.</p>
-          <p>Un assaut conjoint entre les forces républicaines et un détachement Jedi fut lancé pour tenter de le libérer. Au cours de l'opération, Reeves fut exécuté par ses ravisseurs avant que les troupes ne puissent atteindre sa position.</p>
-          <p>La base fut ensuite prise et sécurisée. En reconnaissance de son courage et de son dévouement exemplaire, Sneed Reeves fut promu au grade d'Enseigne et décoré à titre posthume lors d'une cérémonie sur Ord Mantell.</p>
-          <p>Sa mémoire demeure un symbole d'honneur au sein du Régiment de Coruscant.</p>
-        </div>
-      </div>
-
-      <div class="holo-event">
-        <div class="holo-event-year">13 ATC</div>
-        <div class="holo-event-title">Fermeture des Hyperportes Gree</div>
-        <img class="holo-event-image" src="images/histoire/gree.png" alt="Hyperportes Gree"
-             onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image à ajouter'">
-        <div class="holo-event-text">
-          <p>Lors des derniers évènements concernant les hyperportes, les forces armées de l'ancien régiment de Coruscant ont participé à la fermeture de cette dernière.</p>
-          <p>Nombreux des membres du régiment furent présents lors du sacrifice de Zayel Yra Vinya-Sa, ce dernier donna sa vie et son corps pour permettre la fermeture définitive de ces portes sauvant ainsi un nombre incalculable de vie.</p>
-        </div>
-      </div>
-      
-      <div class="holo-event">
-        <div class="holo-event-year">36 ATC</div>
-        <div class="holo-event-title">La Reconquête de Ord Mantell</div>
-        <img class="holo-event-image" src="images/histoire/ord-mantell.png" alt="Reconquête de Ord Mantell"
-             onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image à ajouter'">
-        <div class="holo-event-text">
-          <p>Alors que la Guerre entre la République et l'Empire continue de faire rage, sur la planète Ord Mantell un autre front est ouvert entre la République et les Séparatistes, un groupe voulant renverser le gouvernement républicain.</p>
-          <p>Après des années de guerre, le Major Rogal Dorn lance la Campagne de Ord Mantell pour reprendre complètement le contrôle de la planète.</p>
-          <p>Il ordonna le regroupement de toutes les forces du Corps d'armée et grâce à ses liens avec le Clan Mandalorien Var'kan, le Major a pu regrouper une force armée conséquente.</p>
-          <p>Après un débarquement sur les plages de Ord Mantell, le Major et les forces alliées ont pu établir une tête de pont, fragilisant assez les séparatistes pour permettre aux Républicains de reprendre le dessus et de libérer la planète plusieurs années plus tard.</p>
+          <p>[TEXTE DE L'ÉVÉNEMENT À AJOUTER]</p>
         </div>
       </div>
 
@@ -259,14 +241,14 @@
     <div class="holo-status">
       <span><span class="blink">●</span> CONNEXION SÉCURISÉE</span>
       <span id="horloge">--:--:--</span>
-      <span>SECTEUR: CORUSCANT</span>
+      <span>SECTEUR: KAAS</span>
     </div>
   </div>
 
   <script>
     setTimeout(() => {
-  document.getElementById('boot-screen').style.display = 'none';
-}, 700);
+      document.getElementById('boot-screen').style.display = 'none';
+    }, 700);
 
     function updateClock() {
       const now = new Date();
