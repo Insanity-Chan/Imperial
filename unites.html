@@ -3,28 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Réseau Impérial — Unités Militaires</title>
-  <meta name="description" content="Terminal d'accès aux bases de données de l'Empire. Unités militaires et codes d'alerte.">
+  <title>Réseau Impérial — Unités, Alertes & Décorations</title>
+  <meta name="description" content="Terminal d'accès aux bases de données de l'Empire Galactique. Unités militaires, codes d'alerte et médailles.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="images/ICONE.png">
 
-  <!-- DISCORD / OPEN GRAPH EMBED -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Réseau Impérial — Empire Galactique">
-  <meta property="og:description" content="Terminal d'accès aux bases de données de l'Empire. Histoire du Corps d'Armée et Formation Cadet.">
-  <meta property="og:url" content="https://insanity-chan.github.io/Imperial/">
+  <meta property="og:title" content="Réseau Impérial — Unités, Alertes & Décorations">
+  <meta property="og:description" content="Tableau des unités militaires, codes d'alerte et médailles de l'Empire.">
+  <meta property="og:url" content="https://insanity-chan.github.io/Imperial/unites.html">
   <meta property="og:image" content="https://insanity-chan.github.io/Imperial/preview.png">
   <meta property="og:site_name" content="Réseau Impérial">
   <meta name="theme-color" content="#ff1a1a">
 
-  <!-- TWITTER CARD -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Réseau Impérial — Empire Galactique">
-  <meta name="twitter:description" content="Terminal d'accès aux bases de données de l'Empire.">
+  <meta name="twitter:title" content="Réseau Impérial — Unités, Alertes & Décorations">
+  <meta name="twitter:description" content="Tableau des unités militaires, codes d'alerte et médailles de l'Empire.">
   <meta name="twitter:image" content="https://insanity-chan.github.io/Imperial/preview.png">
-  
+
   <style>
-    /* === TABLEAU AMÉLIORÉ === */
     .holo-table-wrap {
       overflow-x: auto;
       margin: 20px 0;
@@ -45,15 +42,16 @@
       font-size: 0.75rem;
       color: var(--holo-cyan);
       text-shadow: 0 0 5px var(--holo-glow);
-      background: rgba(0, 26, 51, 0.4);
+      background: rgba(26, 0, 0, 0.4);
       white-space: nowrap;
     }
 
     .holo-table-unites td {
       padding: 10px;
       border-bottom: 1px solid var(--holo-dim);
-      opacity: 0.85;
+      opacity: 0.9;
       line-height: 1.5;
+      color: var(--text-white);
     }
 
     .holo-table-unites tr:hover td {
@@ -62,14 +60,13 @@
     }
 
     .holo-table-unites tr:nth-child(even) td {
-      background: rgba(0, 240, 255, 0.02);
+      background: rgba(255, 26, 26, 0.02);
     }
 
     .holo-table-unites tr:nth-child(even):hover td {
       background: var(--holo-dim);
     }
 
-    /* === CODES D'ALERTE === */
     .holo-codes-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -80,7 +77,7 @@
     .holo-code-card {
       border: 1px solid var(--holo-dim);
       padding: 20px;
-      background: rgba(0, 26, 51, 0.2);
+      background: rgba(26, 0, 0, 0.2);
       transition: all 0.3s;
       position: relative;
     }
@@ -103,11 +100,11 @@
       font-size: 0.85rem;
       line-height: 1.7;
       opacity: 0.8;
+      color: var(--text-white);
     }
 
-    /* Couleurs spécifiques aux codes */
-.code-noir .code-name { color: #ddd; text-shadow: 0 0 10px rgba(221,221,221,0.4); }
-.code-noir { border-left: 3px solid #bbb; }
+    .code-noir .code-name { color: #ddd; text-shadow: 0 0 10px rgba(221,221,221,0.4); }
+    .code-noir { border-left: 3px solid #bbb; }
 
     .code-rouge .code-name { color: #ff2233; text-shadow: 0 0 10px rgba(255,34,51,0.6); }
     .code-rouge { border-left: 3px solid #ff2233; }
@@ -120,29 +117,157 @@
 
     .code-blanc .code-name { color: #cccccc; text-shadow: 0 0 10px rgba(200,200,200,0.4); }
     .code-blanc { border-left: 3px solid #cccccc; }
+
+    /* MÉDAILLES */
+    .holo-medaille-category {
+      margin-top: 30px;
+      padding: 20px;
+      border: 1px solid var(--holo-dim);
+      background: rgba(26, 0, 0, 0.2);
+    }
+
+    .holo-medaille-category-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--holo-cyan);
+      text-shadow: 0 0 10px var(--holo-glow);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--holo-cyan);
+    }
+
+    .holo-medaille-subcategory {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-white);
+      opacity: 0.8;
+      margin: 20px 0 10px;
+      padding-left: 10px;
+      border-left: 3px solid var(--holo-cyan);
+    }
+
+    .holo-medaille-item {
+      display: flex;
+      gap: 20px;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255,26,26,0.05);
+    }
+
+    .holo-medaille-item:last-child {
+      border-bottom: none;
+    }
+
+    .holo-medaille-info {
+      flex: 1;
+    }
+
+    .holo-medaille-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--holo-cyan);
+      text-shadow: 0 0 8px var(--holo-glow);
+      margin-bottom: 5px;
+    }
+
+    .holo-medaille-stars {
+      font-size: 0.85rem;
+      color: var(--holo-cyan);
+      opacity: 0.8;
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+
+    .holo-medaille-prime {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border: 1px solid var(--holo-dim);
+      color: var(--holo-cyan);
+      opacity: 0.7;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .holo-medaille-desc {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      opacity: 0.8;
+      color: var(--text-white);
+    }
+
+    .holo-medaille-image {
+      width: 200px;
+      height: 250px;
+      object-fit: contain;
+      border: 1px solid var(--holo-dim);
+      background: rgba(5, 5, 5, 0.5);
+      flex-shrink: 0;
+      transition: all 0.3s;
+      padding: 10px;
+    }
+
+    .holo-medaille-image.ruban {
+      width: 250px;
+      height: 100px;
+    }
+
+    .holo-medaille-image:hover {
+      border-color: var(--holo-cyan);
+      box-shadow: 0 0 15px var(--holo-glow);
+    }
+
+    .holo-medaille-image.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      opacity: 0.3;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .holo-medaille-item {
+        flex-direction: column-reverse;
+      }
+
+      .holo-medaille-image {
+        width: 160px;
+        height: 200px;
+      }
+
+      .holo-medaille-image.ruban {
+        width: 200px;
+        height: 80px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div id="boot-screen">
-    <div class="boot-text">&gt; INITIALISATION DU TERMINAL Réseau Impérial...</div>
-    <div class="boot-text">&gt; CONNEXION AU RÉSEAU DE L'EMPIRE</div>
-    <div class="boot-text">&gt; CHARGEMENT : UNITÉS & CODES D'ALERTE...</div>
+    <div class="boot-text">&gt; INITIALISATION DU TERMINAL IMPÉRIAL...</div>
+    <div class="boot-text">&gt; CONNEXION AU RÉSEAU DE L'EMPIRE...</div>
+    <div class="boot-text">&gt; CHARGEMENT : UNITÉS & DÉCORATIONS...</div>
     <div class="boot-bar"><div class="boot-bar-fill"></div></div>
   </div>
 
   <div class="holo-header">
-    <h1>Unités Militaires</h1>
-    <div class="subtitle">Organisation & Codes d'Alerte — République Galactique</div>
+    <h1>Unités, Alertes & Décorations</h1>
+    <div class="subtitle">Organisation, Codes d'Alerte & Médailles — Empire Galactique</div>
   </div>
 
   <div class="holo-frame">
 
     <div class="holo-nav">
       <a href="index.html"><button>Accueil</button></a>
-      <a href="histoir.html"><button>Histoire du Corps</button></a>
+      <a href="histoire.html"><button>Histoire du Corps</button></a>
       <a href="formation.html"><button>Formation Cadet</button></a>
-      <a href="unites.html"><button>Unités & Code Millitaire</button></a>
+      <a href="unites.html"><button class="active">Unités, Alertes & Décorations</button></a>
       <a href="sphere.html"><button>Sphère</button></a>
       <a href="effectif.html"><button>Effectif</button></a>
     </div>
@@ -150,7 +275,7 @@
     <!-- TABLEAU -->
     <div class="holo-panel active">
       <h2>Tableau des Unités</h2>
-      <p>Structure militaire républicaine — de l'unité de base au Corps d'Armée.</p>
+      <p>Structure militaire impériale — de l'unité de base au Corps d'Armée.</p>
 
       <div class="holo-table-wrap">
         <table class="holo-table-unites">
@@ -189,15 +314,8 @@
               <td>Section d'intervention</td>
               <td>48</td>
               <td>Chef de section</td>
-              <td>Sergent</td>
-              <td>4 groupes</td>
-            </tr>
-            <tr>
-              <td>Section renforcée</td>
-              <td>48-64</td>
-              <td>Chef de section supérieure</td>
               <td>Enseigne</td>
-              <td>Supervision de plusieurs sections ou groupe plus grand</td>
+              <td>4 groupes</td>
             </tr>
             <tr>
               <td>Peloton</td>
@@ -231,21 +349,21 @@
               <td>Brigade</td>
               <td>49 152</td>
               <td>Chef de brigade</td>
-              <td>Commandant</td>
+              <td>Moff</td>
               <td>4 régiments</td>
             </tr>
             <tr>
               <td>Division</td>
               <td>196 608</td>
               <td>Chef de division</td>
-              <td>Commandant / Général</td>
+              <td>Moff</td>
               <td>4 brigades</td>
             </tr>
             <tr>
               <td>Corps d'armée</td>
               <td>786 432</td>
               <td>Chef de corps</td>
-              <td>Général</td>
+              <td>Moff</td>
               <td>4 divisions</td>
             </tr>
           </tbody>
@@ -254,7 +372,7 @@
 
       <!-- CODES D'ALERTE -->
       <h2 style="margin-top: 50px;">Codes d'Alerte</h2>
-      <p>Significations des codes d'alerte.</p>
+      <p>Significations des codes d'alerte impériaux.</p>
 
       <div class="holo-codes-grid">
 
@@ -270,7 +388,7 @@
 
         <div class="holo-code-card code-orange">
           <div class="code-name">Code Orange</div>
-          <div class="code-desc">Menace potentielle, des patrouilles doivent être organisées et une vigilance accrue est de mise. Blaster dans les mains.</div>
+          <div class="code-desc">Menace potentielle, des patrouilles doivent être organisées et une vigilance accrue est de mise. Sabre éteint et Blaster dans les mains.</div>
         </div>
 
         <div class="holo-code-card code-vert">
@@ -280,112 +398,14 @@
 
         <div class="holo-code-card code-blanc">
           <div class="code-name">Code Blanc</div>
-          <div class="code-desc">Rien à Signaler. Blaster dans le holster.</div>
+          <div class="code-desc">Rien à signaler. Sabre et Blaster à la ceinture ou dans holster.</div>
         </div>
 
       </div>
-    </div>
+
       <!-- MÉDAILLES & DÉCORATIONS -->
       <h2 style="margin-top: 50px;">Médailles & Décorations</h2>
-      <p>Décorations de l'Empire.</p>
-
-      <style>
-        .holo-medaille-category {
-          margin-top: 30px;
-          padding: 20px;
-          border: 1px solid var(--holo-dim);
-          background: rgba(0, 26, 51, 0.2);
-        }
-
-        .holo-medaille-category-title {
-          font-family: 'Orbitron', sans-serif;
-          font-size: 1.2rem;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: var(--holo-cyan);
-          text-shadow: 0 0 10px var(--holo-glow);
-          margin-bottom: 20px;
-          padding-bottom: 10px;
-          border-bottom: 1px solid var(--holo-cyan);
-        }
-
-        .holo-medaille-item {
-          display: flex;
-          gap: 20px;
-          padding: 15px 0;
-          border-bottom: 1px solid rgba(0,240,255,0.05);
-        }
-
-        .holo-medaille-item:last-child {
-          border-bottom: none;
-        }
-
-        .holo-medaille-info {
-          flex: 1;
-        }
-
-        .holo-medaille-name {
-          font-family: 'Orbitron', sans-serif;
-          font-size: 1rem;
-          letter-spacing: 0.1em;
-          color: var(--holo-cyan);
-          text-shadow: 0 0 8px var(--holo-glow);
-          margin-bottom: 8px;
-        }
-
-        .holo-medaille-desc {
-          font-size: 0.85rem;
-          line-height: 1.7;
-          opacity: 0.8;
-          color: var(--text-white);
-        }
-
-              .holo-medaille-image {
-          width: 200px;
-          height: 250px;
-          object-fit: contain;
-          border: 1px solid var(--holo-dim);
-          background: rgba(0,8,20,0.5);
-          flex-shrink: 0;
-          transition: all 0.3s;
-          padding: 10px;
-        }
-
-        .holo-medaille-image.ruban {
-          width: 250px;
-          height: 100px;
-        }
-
-        .holo-medaille-image:hover {
-          border-color: var(--holo-cyan);
-          box-shadow: 0 0 15px var(--holo-glow);
-        }
-
-        .holo-medaille-image.placeholder {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 0.7rem;
-          opacity: 0.3;
-          font-style: italic;
-        }
-
-                @media (max-width: 600px) {
-          .holo-medaille-item {
-            flex-direction: column-reverse;
-          }
-
-          .holo-medaille-image {
-            width: 160px;
-            height: 200px;
-          }
-
-          .holo-medaille-image.ruban {
-            width: 200px;
-            height: 80px;
-          }
-        }
-      </style>
+      <p>Décorations de l'Empire Galactique.</p>
 
       <!-- MÉDAILLES MAJEURES -->
       <div class="holo-medaille-category">
@@ -393,65 +413,243 @@
 
         <div class="holo-medaille-item">
           <div class="holo-medaille-info">
-            <div class="holo-medaille-name">Croix de Gloire</div>
-            <div class="holo-medaille-desc">- - - - - -</div>
+            <div class="holo-medaille-name">Médaille de la Légion d'Honneur Impériale</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★★★★</div>
+            <div class="holo-medaille-desc">Cette médaille est la plus haute distinction prestigieuse existant au sein de l'armée Impériale. Elle est réservée aux officiers impériaux ayant servi longtemps au sein de l'armée et ayant accompli de nombreux actes exceptionnels pour l'armée et pour l'Empire. Les officiers obtenant cette médaille sont généralement des Moff de renommée ou d'anciens officiers à la retraite récompensés pour leur prestigieux services.</div>
           </div>
-          <img class="holo-medaille-image" src="images/medailles/croix-gloire.png" alt="Croix de Gloire"
+          <img class="holo-medaille-image" src="images/medailles/legion-honneur-imperiale.png" alt="Médaille de la Légion d'Honneur Impériale"
                onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
         </div>
-
-
-      <!-- MÉDAILLES MINEURES -->
-      <div class="holo-medaille-category">
-        <div class="holo-medaille-category-title">Médailles Mineures</div>
 
         <div class="holo-medaille-item">
           <div class="holo-medaille-info">
-            <div class="holo-medaille-name">Médaille de Chef de Guerre</div>
-            <div class="holo-medaille-desc">- - - - - -</div>
+            <div class="holo-medaille-name">Médaille du Centurion Impérial</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★★★</div>
+            <div class="holo-medaille-desc">Elle est attribuée aux officiers de rang intermédiaire à supérieur qui ont mené des escouades ou des bataillons à la victoire dans des batailles décisives contre l'ennemi galactique, que ce soit contre la République Galactique ou d'autres groupuscules hostiles à l'Empire. Les récipiendaires doivent avoir démontré une capacité exceptionnelle à manœuvrer leurs forces avec précision dans des situations de guerre galactique critiques, s'adaptant aux environnements changeants, que ce soit sur des mondes en guerre ou dans l'espace.</div>
           </div>
-          <img class="holo-medaille-image" src="images/medailles/chef-guerre.png" alt="Médaille de Chef de Guerre"
+          <img class="holo-medaille-image" src="images/medailles/centurion-imperial.png" alt="Médaille du Centurion Impérial"
                onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
         </div>
-
-
-      <!-- DISTINCTIONS DE QUALIFICATIONS -->
-      <div class="holo-medaille-category">
-        <div class="holo-medaille-category-title">Distinctions de Qualifications</div>
 
         <div class="holo-medaille-item">
           <div class="holo-medaille-info">
-            <div class="holo-medaille-name">Médaille de l'Excellence Mécanique</div>
-            <div class="holo-medaille-desc">Médaille remise à des ingénieurs d'exception ayant plus que prouvé leur capacité dans l'ingénierie, capables de réparer tout et n'importe quoi et de mener des projets complexes.</div>
+            <div class="holo-medaille-name">Médaille de la Souveraineté Impériale</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★★★</div>
+            <div class="holo-medaille-desc">Cette médaille est réservée aux seigneurs Sith, aux commandants impériaux, et aux chefs de guerre ayant réussi à asservir des systèmes entiers sous la bannière impériale, en démontrant à la fois une maîtrise militaire, diplomatique et politique. Les récipiendaires doivent avoir étendu l'influence de l'Empire en consolidant des territoires et en écrasant toute rébellion ou opposition par des moyens impitoyables et stratégiques. Le porteur de cette médaille doit incarner l'autorité impériale absolue, avec une vision claire de l'unité et de l'ordre galactique imposé par l'Empire Sith.</div>
           </div>
-          <img class="holo-medaille-image" src="images/medailles/excellence-mecanique.png" alt="Médaille de l'Excellence Mécanique"
+          <img class="holo-medaille-image" src="images/medailles/souverainete-imperiale.png" alt="Médaille de la Souveraineté Impériale"
                onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
         </div>
-
-      <!-- RUBANS -->
-      <div class="holo-medaille-category">
-        <div class="holo-medaille-category-title">Rubans</div>
 
         <div class="holo-medaille-item">
           <div class="holo-medaille-info">
-            <div class="holo-medaille-name">Ruban de Félicitations</div>
-            <div class="holo-medaille-desc">Remis au membre ayant mené à bien plusieurs missions et objectifs donnés par le comité et fournissant un travail exemplaire.</div>
+            <div class="holo-medaille-name">Ordre de la Légion Obscure</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★★</div>
+            <div class="holo-medaille-desc">L'Ordre de la Légion Obscure est décerné exclusivement aux Sith et aux commandants impériaux ayant mené des opérations d'une noirceur exceptionnelle, telles que l'élimination de bastions ennemis de manière impitoyable ou la subjugation de systèmes stellaires entiers par la terreur et la puissance brute. Les récipiendaires sont souvent ceux qui, par la ruse et la cruauté, ont anéanti des forces républicaines ou étouffé des rébellions avant qu'elles ne puissent prendre de l'ampleur, tout en montrant une allégeance absolue envers l'Empereur.</div>
           </div>
-                    <img class="holo-medaille-image ruban" src="images/medailles/ruban-felicitations-etat-major.png" alt="Ruban de Félicitations de l'État-Major"
+          <img class="holo-medaille-image" src="images/medailles/legion-obscure.png" alt="Ordre de la Légion Obscure"
                onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
         </div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Médaille du Héros Impérial</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★★</div>
+            <div class="holo-medaille-desc">La Médaille du Héros Impérial est décernée aux soldats, officiers, ou même aux civils qui ont accompli des actes d'héroïsme exceptionnel en temps de guerre ou en mission secrète pour l'Empire. Les récipiendaires sont ceux qui ont risqué leur vie dans des opérations critiques pour sauver des forces impériales, vaincre des ennemis redoutables, ou accomplir des missions qui ont eu un impact décisif dans les campagnes militaires. Qu'il s'agisse de combats sur les lignes de front ou de sacrifices personnels pour protéger l'Empire, cette médaille reconnaît ceux qui ont marqué l'histoire par leur dévouement sans faille.</div>
+          </div>
+          <img class="holo-medaille-image" src="images/medailles/heros-imperial.png" alt="Médaille du Héros Impérial"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+      </div>
+
+      <!-- DISTINCTIONS DES COMPAGNIES ET BRIGADES -->
+      <div class="holo-medaille-category">
+        <div class="holo-medaille-category-title">Distinctions des Compagnies et Brigades</div>
+
+        <div class="holo-medaille-subcategory">Compagnie Goliath</div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Croix du Feu Impérial</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★</div>
+            <div class="holo-medaille-prime">Prime : 30 000 crédits</div>
+            <div class="holo-medaille-desc">Décernée pour des actions où la compagnie Goliath a joué un rôle décisif dans une bataille ou une campagne.</div>
+          </div>
+          <img class="holo-medaille-image" src="images/medailles/croix-feu-imperial.png" alt="Croix du Feu Impérial"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Médaille du Mastodonte Impérial</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★</div>
+            <div class="holo-medaille-prime">Prime : 50 000 crédits</div>
+            <div class="holo-medaille-desc">Attribuée aux officiers et soldats ayant fait preuve d'une expertise exceptionnelle dans l'utilisation des pièces d'artillerie lourde.</div>
+          </div>
+          <img class="holo-medaille-image" src="images/medailles/mastodonte-imperial.png" alt="Médaille du Mastodonte Impérial"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+
+        <div class="holo-medaille-subcategory">Compagnie Spectre</div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Ruban du Tireur d'Élite</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★</div>
+            <div class="holo-medaille-prime">Prime : 30 000 crédits</div>
+            <div class="holo-medaille-desc">Récompense pour avoir atteint des cibles particulièrement difficiles ou cruciales, souvent dans des conditions extrêmes.</div>
+          </div>
+          <img class="holo-medaille-image ruban" src="images/medailles/ruban-tireur-elite.png" alt="Ruban du Tireur d'Élite"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Médaille de l'Ombre Impériale</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★</div>
+            <div class="holo-medaille-prime">Prime : 50 000 crédits</div>
+            <div class="holo-medaille-desc">Récompense pour des opérations de tir de longue portée effectuées discrètement sans être détecté, garantissant une discrétion et une efficacité maximales.</div>
+          </div>
+          <img class="holo-medaille-image" src="images/medailles/ombre-imperiale.png" alt="Médaille de l'Ombre Impériale"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+
+        <div class="holo-medaille-subcategory">Brigade Mortalis</div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Ruban de Bravoure Médicale</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★</div>
+            <div class="holo-medaille-prime">Prime : 30 000 crédits</div>
+            <div class="holo-medaille-desc">Récompense pour avoir fourni des soins médicaux sous le feu ennemi, au péril de sa propre vie, permettant de sauver des blessés sur le champ de bataille.</div>
+          </div>
+          <img class="holo-medaille-image ruban" src="images/medailles/ruban-bravoure-medicale.png" alt="Ruban de Bravoure Médicale"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Médaille du Médecin d'Élite</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★</div>
+            <div class="holo-medaille-prime">Prime : 50 000 crédits</div>
+            <div class="holo-medaille-desc">Attribuée aux médecins ayant reçu une formation médicale avancée et démontré une maîtrise exceptionnelle dans l'application de techniques médicales en milieu militaire.</div>
+          </div>
+          <img class="holo-medaille-image" src="images/medailles/medecin-elite.png" alt="Médaille du Médecin d'Élite"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+
+        <div class="holo-medaille-subcategory">Brigade Vortex</div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Ruban du Maître Piégeur</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★</div>
+            <div class="holo-medaille-prime">Prime : 30 000 crédits</div>
+            <div class="holo-medaille-desc">Récompense pour l'installation habile de pièges explosifs ou mécaniques, empêchant l'ennemi de progresser et causant des pertes importantes.</div>
+          </div>
+          <img class="holo-medaille-image ruban" src="images/medailles/ruban-maitre-piegeur.png" alt="Ruban du Maître Piégeur"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Médaille du Saboteur Impérial</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★</div>
+            <div class="holo-medaille-prime">Prime : 50 000 crédits</div>
+            <div class="holo-medaille-desc">La médaille du Saboteur Impérial est une distinction prestigieuse attribuée à la brigade Vortex, honorant leurs compétences exceptionnelles en sabotage, démolition et infiltration.</div>
+          </div>
+          <img class="holo-medaille-image" src="images/medailles/saboteur-imperial.png" alt="Médaille du Saboteur Impérial"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+      </div>
+
+      <!-- DISTINCTIONS GÉNÉRALES -->
+      <div class="holo-medaille-category">
+        <div class="holo-medaille-category-title">Distinctions Générales</div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Ruban du Mérite Impérial</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★</div>
+            <div class="holo-medaille-prime">Prime : 25 000 crédits</div>
+            <div class="holo-medaille-desc">Récompense pour les soldats ayant démontré un courage remarquable au péril de leur vie.</div>
+          </div>
+          <img class="holo-medaille-image ruban" src="images/medailles/ruban-merite-imperial.png" alt="Ruban du Mérite Impérial"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Ruban de l'Instructeur Impérial</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★</div>
+            <div class="holo-medaille-prime">Prime : 25 000 crédits</div>
+            <div class="holo-medaille-desc">Le Ruban de l'Instructeur Impérial est une distinction honorifique décernée aux officiers et soldats ayant démontré une excellence exceptionnelle dans la formation et l'entraînement des troupes impériales.</div>
+          </div>
+          <img class="holo-medaille-image ruban" src="images/medailles/ruban-instructeur-imperial.png" alt="Ruban de l'Instructeur Impérial"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Croix du Commandement Impérial</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★</div>
+            <div class="holo-medaille-prime">Prime : 50 000 crédits</div>
+            <div class="holo-medaille-desc">Récompense pour des actions exemplaires au niveau du commandement opérationnel.</div>
+          </div>
+          <img class="holo-medaille-image" src="images/medailles/croix-commandement-imperial.png" alt="Croix du Commandement Impérial"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Croix de l'Ordre Impérial</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★</div>
+            <div class="holo-medaille-prime">Prime : 75 000 crédits</div>
+            <div class="holo-medaille-desc">Une haute distinction attribuée pour des services exceptionnels à l'Empereur et à l'Empire dans son ensemble.</div>
+          </div>
+          <img class="holo-medaille-image" src="images/medailles/croix-ordre-imperial.png" alt="Croix de l'Ordre Impérial"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+      </div>
+
+      <!-- DISTINCTIONS SITH -->
+      <div class="holo-medaille-category">
+        <div class="holo-medaille-category-title">Distinctions Sith</div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Enseigne Sith</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★★</div>
+            <div class="holo-medaille-desc">Une enseigne Sith est un titre honorifique au sein de l'Empire Sith, attribué à des individus qui jouent un rôle crucial sur les champs de bataille. Ceux qui portent ce titre possèdent un certain degré d'autorité sur les forces impériales, en particulier dans les situations de combat. De plus, il a su prouver sa valeur à l'armée impériale et a donc leur confiance.</div>
+          </div>
+          <img class="holo-medaille-image" src="images/medailles/enseigne-sith.png" alt="Enseigne Sith"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+
+        <div class="holo-medaille-item">
+          <div class="holo-medaille-info">
+            <div class="holo-medaille-name">Maréchal Sith</div>
+            <div class="holo-medaille-stars">Niveaux de prestige : ★★★★</div>
+            <div class="holo-medaille-desc">Un maréchal Sith est un titre militaire prestigieux au sein de l'Empire Sith, conféré à des individus d'une grande compétence stratégique et tactique. Les maréchaux Sith sont responsables de diriger de vastes armées impériales, ayant une autorité absolue sur les forces militaires lors des campagnes majeures. Ils ont donc réussi à gagner la confiance des hauts dignitaires de l'armée impériale.</div>
+          </div>
+          <img class="holo-medaille-image" src="images/medailles/marechal-sith.png" alt="Maréchal Sith"
+               onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image'">
+        </div>
+      </div>
+
+    </div>
 
     <div class="holo-status">
       <span><span class="blink">●</span> CONNEXION SÉCURISÉE</span>
       <span id="horloge">--:--:--</span>
-      <span>SECTEUR: DROMUND KASS</span>
+      <span>SECTEUR: KAAS</span>
     </div>
   </div>
 
   <script>
     setTimeout(() => {
-  document.getElementById('boot-screen').style.display = 'none';
-}, 700);
+      document.getElementById('boot-screen').style.display = 'none';
+    }, 700);
 
     function updateClock() {
       const now = new Date();
