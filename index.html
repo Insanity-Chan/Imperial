@@ -3,29 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HoloNet — Terminal Galactique de la République</title>
-  <meta name="description" content="Terminal d'accès aux bases de données de la République Galactique. Histoire du Corps d'Armée et Formation Cadet.">
+  <title>Réseau Impérial — Terminal Galactique de l'Empire</title>
+  <meta name="description" content="Terminal d'accès aux bases de données de l'Empire Galactique. Histoire du Corps d'Armée et Formation Cadet.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="images/ICONE.png">
 
   <!-- DISCORD / OPEN GRAPH EMBED -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="HoloNet — République Galactique">
-  <meta property="og:description" content="Terminal d'accès aux bases de données de la République. Histoire du Corps d'Armée et Formation Cadet.">
-  <meta property="og:url" content="https://insanity-chan.github.io/Tryingthingsout/">
-  <meta property="og:image" content="https://insanity-chan.github.io/Tryingthingsout/preview.png">
-  <meta property="og:site_name" content="HoloNet">
-  <meta name="theme-color" content="#00f0ff">
+  <meta property="og:title" content="Réseau Impérial — Empire Galactique">
+  <meta property="og:description" content="Terminal d'accès aux bases de données de l'Empire. Histoire du Corps d'Armée et Formation Cadet.">
+  <meta property="og:url" content="https://insanity-chan.github.io/Imperial/">
+  <meta property="og:image" content="https://insanity-chan.github.io/Imperial/preview.png">
+  <meta property="og:site_name" content="Réseau Impérial">
+  <meta name="theme-color" content="#ff1a1a">
 
   <!-- TWITTER CARD -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="HoloNet — République Galactique">
-  <meta name="twitter:description" content="Terminal d'accès aux bases de données de la République.">
-  <meta name="twitter:image" content="https://insanity-chan.github.io/Tryingthingsout/preview.png">
+  <meta name="twitter:title" content="Réseau Impérial — Empire Galactique">
+  <meta name="twitter:description" content="Terminal d'accès aux bases de données de l'Empire.">
+  <meta name="twitter:image" content="https://insanity-chan.github.io/Imperial/preview.png">
 
   <style>
-    /* === IMAGE EN ARRIÈRE-PLAN === */
-    /* Remplace le chemin par ton image */
     body {
       background-image: url('images/fond.png');
       background-size: cover;
@@ -34,17 +32,15 @@
       background-repeat: no-repeat;
     }
 
-    /* Voile sombre pour garder le texte lisible par-dessus l'image */
     body::before {
       content: '';
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0, 8, 20, 0.75);
+      background: rgba(5, 5, 5, 0.75);
       z-index: -1;
     }
 
-    /* CARTES CLIQUABLES */
     .holo-cards-link {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -58,7 +54,7 @@
       text-decoration: none;
       border: 1px solid var(--holo-dim);
       padding: 25px 20px;
-      background: rgba(0, 26, 51, 0.4);
+      background: rgba(26, 0, 0, 0.4);
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
@@ -69,7 +65,7 @@
       position: absolute;
       top: 0; left: -100%;
       width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.05), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,26,26,0.05), transparent);
       transition: left 0.5s;
     }
 
@@ -79,7 +75,7 @@
 
     .holo-card-link:hover {
       border-color: var(--holo-cyan);
-      box-shadow: 0 0 20px var(--holo-glow), inset 0 0 20px rgba(0,240,255,0.05);
+      box-shadow: 0 0 20px var(--holo-glow), inset 0 0 20px rgba(255,26,26,0.05);
       transform: translateY(-3px);
     }
 
@@ -120,14 +116,14 @@
     .holo-placeholder {
       border: 1px dashed var(--holo-dim);
       padding: 25px 20px;
-      background: rgba(0, 26, 51, 0.2);
+      background: rgba(26, 0, 0, 0.2);
       transition: all 0.3s;
       cursor: default;
     }
 
     .holo-placeholder:hover {
-      border-color: rgba(0,240,255,0.3);
-      background: rgba(0, 26, 51, 0.3);
+      border-color: rgba(255,26,26,0.3);
+      background: rgba(26, 0, 0, 0.3);
     }
 
     .holo-placeholder .card-icon {
@@ -168,88 +164,84 @@
 <body>
 
   <div id="boot-screen">
-    <div class="boot-text">&gt; INITIALISATION DU TERMINAL HOLONET...</div>
-    <div class="boot-text">&gt; CONNEXION AU RÉSEAU DE LA RÉPUBLIQUE...</div>
+    <div class="boot-text">&gt; INITIALISATION DU TERMINAL IMPÉRIAL...</div>
+    <div class="boot-text">&gt; CONNEXION AU RÉSEAU DE L'EMPIRE...</div>
     <div class="boot-text">&gt; AUTHENTIFICATION : ACCORDÉE</div>
     <div class="boot-text">&gt; CHARGEMENT DES DONNÉES...</div>
     <div class="boot-bar"><div class="boot-bar-fill"></div></div>
   </div>
 
   <div class="holo-header">
-    <h1>HoloNet</h1>
-    <div class="subtitle">Terminal Galactique — République</div>
+    <h1>Réseau Impérial</h1>
+    <div class="subtitle">Terminal Galactique — Empire</div>
   </div>
 
   <div class="holo-frame">
 
     <div class="holo-nav">
-      <a href="index.html"><button>Accueil</button></a>
+      <a href="index.html"><button class="active">Accueil</button></a>
       <a href="histoir.html"><button>Histoire du Corps</button></a>
       <a href="formation.html"><button>Formation Cadet</button></a>
-      <a href="unites.html"><button>Unités & Code Millitaire</button></a>
+      <a href="unites.html"><button>Unités, Alertes & Décorations</button></a>
       <a href="sphere.html"><button>Sphère</button></a>
       <a href="effectif.html"><button>Effectif</button></a>
     </div>
 
     <div class="holo-panel active">
-      <h2>Bienvenue, Républicain(e)</h2>
-      <p>Ce terminal vous permet d'accéder aux bases de données de la République Galactique. Naviguez à travers les onglets pour consulter L'histoire du Corps d'Armée et la Formation Cadet.</p>
+      <h2>Bienvenue, Impérial(e)</h2>
+      <p>Ce terminal vous permet d'accéder aux bases de données de l'Empire Galactique. Naviguez à travers les onglets pour consulter L'histoire du Corps d'Armée et la Formation Cadet.</p>
 
-            <div class="holo-cards-link">
+      <div class="holo-cards-link">
 
-        <!-- CARTE CLIQUABLE 1 -->
-        <a href="histoir.html" class="holo-card-link">
+        <a href="histoire.html" class="holo-card-link">
           <div class="card-icon">📋</div>
           <div class="card-title">Histoire du Corps d'Armée</div>
-          <div class="card-desc">C'est ici que se trouve l'histoire de la Grande Armée républicaine !</div>
+          <div class="card-desc">Texte temporaire — à remplacer manuellement.</div>
           <div class="card-arrow">▸ Accéder</div>
         </a>
 
-        <!-- CARTE CLIQUABLE 2 -->
         <a href="formation.html" class="holo-card-link">
           <div class="card-icon">🎖️</div>
           <div class="card-title">Formation Cadet</div>
-          <div class="card-desc">La formation cadet, c'est là que les bases les plus importantes d'un bon soldat sont enseignées !</div>
+          <div class="card-desc">Texte temporaire — à remplacer manuellement.</div>
           <div class="card-arrow">▸ Accéder</div>
         </a>
 
-        <!-- CARTE CLIQUABLE 3 -->
         <a href="unites.html" class="holo-card-link">
           <div class="card-icon">⚔️</div>
-          <div class="card-title">Unités Militaires</div>
-          <div class="card-desc">Informations sur les unités militaires et les codes.</div>
+          <div class="card-title">Unités, Alertes & Décorations</div>
+          <div class="card-desc">Texte temporaire — à remplacer manuellement.</div>
           <div class="card-arrow">▸ Accéder</div>
         </a>
 
-        <!-- CARTE CLIQUABLE 4 -->
         <a href="sphere.html" class="holo-card-link">
           <div class="card-icon">🌐</div>
-          <div class="card-title">Information Sphère de la République</div>
-          <div class="card-desc">Tu trouveras des renseignements basiques sur toutes les sphères de la République pour t'aider à faire ton choix !</div>
+          <div class="card-title">Information Sphère de l'Empire</div>
+          <div class="card-desc">Texte temporaire — à remplacer manuellement.</div>
           <div class="card-arrow">▸ Accéder</div>
         </a>
 
-              <!-- CARTE CLIQUABLE 5 -->
         <a href="effectif.html" class="holo-card-link">
           <div class="card-icon">👥</div>
           <div class="card-title">Effectif Gradé</div>
-          <div class="card-desc">Répertoire d'effectif gradé</div>
+          <div class="card-desc">Texte temporaire — à remplacer manuellement.</div>
           <div class="card-arrow">▸ Accéder</div>
         </a>
 
       </div>
+    </div>
 
     <div class="holo-status">
       <span><span class="blink">●</span> CONNEXION SÉCURISÉE</span>
       <span id="horloge">--:--:--</span>
-      <span>SECTEUR: CORUSCANT</span>
+      <span>SECTEUR: KAAS</span>
     </div>
   </div>
 
   <script>
-   setTimeout(() => {
-  document.getElementById('boot-screen').style.display = 'none';
-}, 700);
+    setTimeout(() => {
+      document.getElementById('boot-screen').style.display = 'none';
+    }, 700);
 
     function updateClock() {
       const now = new Date();
