@@ -16,11 +16,6 @@
   <meta property="og:site_name" content="Réseau Impérial">
   <meta name="theme-color" content="#ff1a1a">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Réseau Impérial — Corp & Spécialisation">
-  <meta name="twitter:description" content="Corp et Spécialisation de l'armée impériale.">
-  <meta name="twitter:image" content="https://insanity-chan.github.io/Imperial/preview.png">
-
   <style>
     .holo-corp-category {
       font-family: 'Orbitron', sans-serif;
@@ -117,11 +112,498 @@
     }
 
     .holo-corp-item.open .holo-corp-content {
-      max-height: 2000px;
+      max-height: 3000px;
     }
 
     .holo-corp-inner {
       padding: 0 20px 25px;
     }
 
-    .holo
+    .holo-corp-subtitle {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-white);
+      opacity: 0.6;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--holo-dim);
+    }
+
+    .holo-corp-desc {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      opacity: 0.85;
+      color: var(--text-white);
+      margin-bottom: 25px;
+    }
+
+    .holo-corp-desc p {
+      margin-bottom: 12px;
+    }
+
+    .holo-corp-skills-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--holo-cyan);
+      text-shadow: 0 0 10px var(--holo-glow);
+      margin-bottom: 15px;
+      padding-top: 15px;
+      border-top: 1px solid var(--holo-dim);
+    }
+
+    .holo-corp-skills {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .holo-corp-skill {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--holo-cyan);
+      text-shadow: 0 0 8px var(--holo-glow);
+      padding: 10px 25px;
+      border: 1px solid var(--holo-dim);
+      background: rgba(26, 0, 0, 0.3);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .holo-corp-skill:hover {
+      border-color: var(--holo-cyan);
+      background: var(--holo-dim);
+      box-shadow: 0 0 15px var(--holo-glow);
+      transform: translateY(-3px);
+    }
+
+    .holo-corp-image {
+      width: 100%;
+      max-width: 400px;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      margin: 20px auto 0;
+      border: 1px solid var(--holo-dim);
+      background: rgba(5, 5, 5, 0.5);
+      transition: all 0.3s;
+    }
+
+    .holo-corp-image:hover {
+      border-color: var(--holo-cyan);
+      box-shadow: 0 0 15px var(--holo-glow);
+    }
+
+    .holo-corp-image.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      opacity: 0.3;
+      font-style: italic;
+    }
+
+    /* MODAL COMPÉTENCE */
+    .holo-skill-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(4px);
+      z-index: 10003;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .holo-skill-overlay.active {
+      display: flex;
+    }
+
+    .holo-skill-box {
+      position: relative;
+      max-width: 750px;
+      width: 90%;
+      border: 1px solid var(--holo-cyan);
+      background: rgba(26, 0, 0, 0.95);
+      padding: 45px;
+      box-shadow: 0 0 40px var(--holo-glow), inset 0 0 30px rgba(255,26,26,0.05);
+      animation: skillIn 0.3s ease;
+    }
+
+    @keyframes skillIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .holo-skill-box::before,
+    .holo-skill-box::after {
+      content: '';
+      position: absolute;
+      width: 23px; height: 23px;
+      border: 2px solid var(--holo-cyan);
+      box-shadow: 0 0 8px var(--holo-glow);
+    }
+
+    .holo-skill-box::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+    .holo-skill-box::after  { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+    .holo-skill-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.1rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: 0 0 12px var(--holo-glow);
+      margin-bottom: 30px;
+      color: var(--holo-cyan);
+    }
+
+    .holo-skill-gif {
+      width: 100%;
+      max-width: 500px;
+      max-height: 400px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      border: 1px solid var(--holo-dim);
+      background: rgba(5, 5, 5, 0.5);
+    }
+
+    .holo-skill-close {
+      position: absolute;
+      top: 15px; right: 23px;
+      background: none;
+      border: none;
+      color: var(--holo-cyan);
+      font-size: 2.25rem;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+
+    .holo-skill-close:hover {
+      opacity: 1;
+      text-shadow: 0 0 10px var(--holo-glow);
+    }
+
+    @media (max-width: 600px) {
+      .holo-corp-skills {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .holo-corp-skill {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="boot-screen">
+    <div class="boot-text">&gt; INITIALISATION DU TERMINAL IMPÉRIAL...</div>
+    <div class="boot-text">&gt; CONNEXION AU RÉSEAU DE L'EMPIRE...</div>
+    <div class="boot-text">&gt; CHARGEMENT : CORP & SPÉCIALISATION...</div>
+    <div class="boot-bar"><div class="boot-bar-fill"></div></div>
+  </div>
+
+  <div class="holo-header">
+    <h1>Corp & Spécialisation</h1>
+    <div class="subtitle">Organisation — Empire Galactique</div>
+  </div>
+
+  <div class="holo-frame">
+
+    <div class="holo-nav">
+      <a href="index.html"><button>Accueil</button></a>
+      <a href="histoir.html"><button>Histoire du Corps</button></a>
+      <a href="formation.html"><button>Formation Cadet</button></a>
+      <a href="corparmee.html"><button class="active">Corp & Spé.</button></a>
+      <a href="unites.html"><button>Unités, Alertes & Décorations</button></a>
+      <a href="sphere.html"><button>Sphère</button></a>
+    </div>
+
+    <!-- SOMMAIRE -->
+    <div class="holo-panel active">
+      <h2>Sommaire</h2>
+      <div class="holo-sommaire">
+        <a href="#corp" class="holo-link">Corp</a>
+        <a href="#specialisation" class="holo-link">Spécialisation</a>
+      </div>
+    </div>
+
+    <!-- CORP -->
+    <div class="holo-section" id="corp">
+      <div class="holo-corp-category">Corp</div>
+
+      <div class="holo-corp-toggle-all">
+        <button onclick="toggleAllCorp('corp', true)">▸ Tout ouvrir</button>
+        <button onclick="toggleAllCorp('corp', false)">▸ Tout fermer</button>
+      </div>
+
+      <!-- SOLDAT LOURD -->
+      <div class="holo-corp-item" data-group="corp">
+        <div class="holo-corp-header" onclick="toggleCorp(this)">
+          <div class="holo-corp-title">Soldat Lourd</div>
+          <div class="holo-corp-arrow">▸</div>
+        </div>
+        <div class="holo-corp-content">
+          <div class="holo-corp-inner">
+            <div class="holo-corp-subtitle">Présentation du Corps</div>
+            <div class="holo-corp-desc">
+              <p>Le Corps des Soldats Lourds est l'un des corps les plus compliqués à rejoindre. Il est connu pour sa grande maîtrise des armes ainsi que sa résistance. En effet, les Soldats Lourds seront les piliers de l'armée impériale sur le front. Souvent à l'avant, ils devront faire face aux assauts des républicains et jedis à l'aide de leurs armes lourdes.</p>
+              <p>Un Soldat Lourd se doit d'être réactif et aux aguets afin d'intervenir comme il se doit sur un champ de bataille. Leur force de frappe est l'une des plus importante et meurtrière face aux adversaires.</p>
+              <p>Ils peuvent également servir de gardes impériaux, notamment lorsqu'ils sont équipés de leur bouclier impérial ainsi que de leur grenade paralysante.</p>
+            </div>
+            <div class="holo-corp-skills-title">Compétences Requises</div>
+            <div class="holo-corp-skills">
+              <div class="holo-corp-skill" onclick="openSkillModal('Résistance', 'images/corp/soldat-lourd-resistance.gif')">Résistance</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Mentalité', 'images/corp/soldat-lourd-mentalite.gif')">Mentalité</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Polyvalence', 'images/corp/soldat-lourd-polyvalence.gif')">Polyvalence</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Réactivité', 'images/corp/soldat-lourd-reactivite.gif')">Réactivité</div>
+            </div>
+            <img class="holo-corp-image" src="images/corp/soldat-lourd.png" alt="Soldat Lourd"
+                 onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image à ajouter'">
+          </div>
+        </div>
+      </div>
+
+      <!-- SNIPER -->
+      <div class="holo-corp-item" data-group="corp">
+        <div class="holo-corp-header" onclick="toggleCorp(this)">
+          <div class="holo-corp-title">Sniper</div>
+          <div class="holo-corp-arrow">▸</div>
+        </div>
+        <div class="holo-corp-content">
+          <div class="holo-corp-inner">
+            <div class="holo-corp-subtitle">Présentation du Corps</div>
+            <div class="holo-corp-desc">
+              <p>Le Corps des Sniper fait partie des corps d'armée les plus importants</p>
+              <p>De par ses multiples fonctions, les membres le composant, se doivent d'être des plus efficaces.</p>
+              <p>Lors d'opérations, les Sniper peuvent intervenir pour plusieurs raisons : Il peut s'agir de missions de reconnaissance, d'assassinat, de soutien aux unités ou encore d'assauts de structures.</p>
+              <p>En tant que Sniper vous devez avoir la capacité d'agir avec sang froid. Vous devrez être capable d'atteindre le plus rapidement et précisément le ou les objectifs qui vous seront fixés.</p>
+              <p>En rejoignant ce corps, vous devrez impérativement lire ce document et retenir les responsabilités essentielles dont vous aurez la charge.</p>
+            </div>
+            <div class="holo-corp-skills-title">Compétences Requises</div>
+            <div class="holo-corp-skills">
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 1', 'images/corp/sniper-comp1.gif')">Discipline</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 2', 'images/corp/sniper-comp2.gif')">Discrétion</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 3', 'images/corp/sniper-comp3.gif')">Rapidité</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 4', 'images/corp/sniper-comp4.gif')">Précision</div>
+            </div>
+            <img class="holo-corp-image" src="images/corp/sniper.png" alt="Sniper"
+                 onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image à ajouter'">
+          </div>
+        </div>
+      </div>
+
+      <!-- COMMANDO -->
+      <div class="holo-corp-item" data-group="corp">
+        <div class="holo-corp-header" onclick="toggleCorp(this)">
+          <div class="holo-corp-title">Commando</div>
+          <div class="holo-corp-arrow">▸</div>
+        </div>
+        <div class="holo-corp-content">
+          <div class="holo-corp-inner">
+            <div class="holo-corp-subtitle">Présentation du Corps</div>
+            <div class="holo-corp-desc">
+              <p>Le Corps des Commando est le corps principal de l'Empire.</p>
+              <p>Il regroupe les unités ayant une capacité à s'adapter facilement au terrain sur lequel ils sont déployés.</p>
+              <p>Les Commando sont envoyés pour différentes missions, allant de simple reconnaissance en zone hostile, à la réalisation d'assauts et débordement de troupes ennemies. </p>
+              <p>Grâce à leur Jumpack, ils ont la possibilité de se mouvoir rapidement, évitant les assauts répétitifs des Jedis ou des Républicains tout en aillant une bonne cadence de feu.</p>
+              <p>Un Commando doit avoir la capacité de fournir rapidement et clairement les informations sur le terrain.</p>
+              <p>En rejoignant ce corps, vous devrez impérativement lire ce document et retenir les responsabilités essentielles dont vous aurez la charge.</p>
+            </div>
+            <div class="holo-corp-skills-title">Compétences Requises</div>
+            <div class="holo-corp-skills">
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 1', 'images/corp/commando-comp1.gif')">Mobilité</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 2', 'images/corp/commando-comp2.gif')">Inventivité</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 3', 'images/corp/commando-comp3.gif')">Regularité</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 4', 'images/corp/commando-comp4.png')">Coordination</div>
+            </div>
+            <img class="holo-corp-image" src="images/corp/commando.png" alt="Commando"
+                 onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image à ajouter'">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SPÉCIALISATION -->
+    <div class="holo-section" id="specialisation">
+      <div class="holo-corp-category">Spécialisation</div>
+
+      <div class="holo-corp-toggle-all">
+        <button onclick="toggleAllCorp('specialisation', true)">▸ Tout ouvrir</button>
+        <button onclick="toggleAllCorp('specialisation', false)">▸ Tout fermer</button>
+      </div>
+
+      <!-- AÉROPORTÉ -->
+      <div class="holo-corp-item" data-group="specialisation">
+        <div class="holo-corp-header" onclick="toggleCorp(this)">
+          <div class="holo-corp-title">Aéroporté</div>
+          <div class="holo-corp-arrow">▸</div>
+        </div>
+        <div class="holo-corp-content">
+          <div class="holo-corp-inner">
+            <div class="holo-corp-subtitle">Présentation de la Briage</div>
+            <div class="holo-corp-desc">
+              <p>La Brigade Aéroporté est une unité d’élite, réputée pour sa mobilité exceptionnelle et sa capacité à frapper rapidement derrière les lignes ennemies. </p>
+              <p>Chaque soldat de la brigade est équipé d’un jetpack de dernière génération, d’armes légères à moyenne portée et de systèmes tactiques intégrés, leur permettant de naviguer à travers terrains complexes et zones urbaines avec une précision chirurgicale.</p>
+              <p>La tactique de L'Aéroporté repose sur la surprise et la rapidité : les escouades surgissent du ciel comme un tourbillon destructeur, frappent leur cible avec efficacité, puis se dispersent avant que l’ennemi ne puisse réagir.</p>
+              <p>Les vétérans de la Brigade sont souvent décrits comme des maîtres du ciel, capables de manœuvres acrobatiques complexes et d’anticiper les mouvements ennemis grâce à un entraînement intensif et à des technologies de ciblage avancées. </p>
+            </div>
+            <div class="holo-corp-skills-title">Compétences Requises</div>
+            <div class="holo-corp-skills">
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 1', 'images/corp/aeroporte-comp1.gif')">Vitesse</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 2', 'images/corp/aeroporte-comp2.gif')">Coordination</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 3', 'images/corp/aeroporte-comp3.gif')">Adaptabilitée</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 4', 'images/corp/aeroporte-comp4.png')">Efficacité</div>
+            </div>
+            <img class="holo-corp-image" src="images/corp/aeroporte.png" alt="Aéroporté"
+                 onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image à ajouter'">
+          </div>
+        </div>
+      </div>
+
+      <!-- INGÉNIEUR -->
+      <div class="holo-corp-item" data-group="specialisation">
+        <div class="holo-corp-header" onclick="toggleCorp(this)">
+          <div class="holo-corp-title">Ingénieur</div>
+          <div class="holo-corp-arrow">▸</div>
+        </div>
+        <div class="holo-corp-content">
+          <div class="holo-corp-inner">
+            <div class="holo-corp-subtitle">Présentation de la Briage</div>
+            <div class="holo-corp-desc">
+              <p>La Brigade Ingénieur a été fondée pour répondre aux besoins des fronts les plus dangereux, où l’ingénierie de combat et la puissance destructive sont indispensables.</p>
+              <p>Depuis sa création, la brigade a été déployée sur des planètes stratégiques et des installations ennemies, combinant expertise technique et efficacité létale. </p>
+              <p>Elle est devenue légendaire pour sa capacité à transformer n’importe quel terrain en champ de bataille favorable à l’Empire.</p>
+            </div>
+            <div class="holo-corp-skills-title">Compétences Requises</div>
+            <div class="holo-corp-skills">
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 1', 'images/corp/ingenieur-comp1.gif')">Discipline</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 2', 'images/corp/ingenieur-comp2.gif')">Technologie</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 3', 'images/corp/ingenieur-comp3.gif')">Destruction</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 4', 'images/corp/ingenieur-comp4.png')">Controle</div>
+            </div>
+            <img class="holo-corp-image" src="images/corp/ingenieur.png" alt="Ingénieur"
+                 onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image à ajouter'">
+          </div>
+        </div>
+      </div>
+
+      <!-- MÉDECIN -->
+      <div class="holo-corp-item" data-group="specialisation">
+        <div class="holo-corp-header" onclick="toggleCorp(this)">
+          <div class="holo-corp-title">Médecin</div>
+          <div class="holo-corp-arrow">▸</div>
+        </div>
+        <div class="holo-corp-content">
+          <div class="holo-corp-inner">
+            <div class="holo-corp-subtitle">Présentation de la Briage</div>
+            <div class="holo-corp-desc">
+              <p>La Brigade Médical Impérial est une division au sein de l'armée impériale qui est chargé du traitement médical et des soins des forces impériales.</p>
+              <p>Les médecins impériaux sont des militaires de l'Empire chargés de fournir les premiers soins et les soins de traumatologie de première ligne sur le champ de bataille.</p>
+              <p>Ils bénéficient d'aides de droïdes et de technologies médicales de pointe. </p>
+            </div>
+            <div class="holo-corp-skills-title">Compétences Requises</div>
+            <div class="holo-corp-skills">
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 1', 'images/corp/medecin-comp1.gif')">Sang-Froid</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 2', 'images/corp/medecin-comp2.gif')">Assiduité</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 3', 'images/corp/medecin-comp3.gif')">Intelligence</div>
+              <div class="holo-corp-skill" onclick="openSkillModal('Compétence 4', 'images/corp/medecin-comp4.png')">Communication</div>
+            </div>
+            <img class="holo-corp-image" src="images/corp/medecin.png" alt="Médecin"
+                 onerror="this.classList.add('placeholder');this.alt='';this.src='';this.textContent='Image à ajouter'">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="holo-status">
+      <span><span class="blink">●</span> CONNEXION SÉCURISÉE</span>
+      <span id="horloge">--:--:--</span>
+      <span>SECTEUR: DROMUND KAAS</span>
+    </div>
+  </div>
+
+  <!-- MODAL COMPÉTENCE -->
+  <div class="holo-skill-overlay" id="skillModal" onclick="closeSkillModal(event)">
+    <div class="holo-skill-box" onclick="event.stopPropagation()">
+      <button class="holo-skill-close" onclick="closeSkillModal(event)">×</button>
+      <div class="holo-skill-name" id="modalSkillName">Compétence</div>
+      <img class="holo-skill-gif" id="modalSkillGif" src="" alt="Compétence">
+    </div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('boot-screen').style.display = 'none';
+    }, 700);
+
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('horloge').textContent = `${h}:${m}:${s}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function toggleCorp(header) {
+      const item = header.parentElement;
+      item.classList.toggle('open');
+    }
+
+    function toggleAllCorp(group, open) {
+      const items = document.querySelectorAll(`[data-group="${group}"]`);
+      items.forEach(item => {
+        if (open) {
+          item.classList.add('open');
+        } else {
+          item.classList.remove('open');
+        }
+      });
+    }
+
+    function openSkillModal(skillName, gifPath) {
+      document.getElementById('modalSkillName').textContent = skillName;
+
+      const gif = document.getElementById('modalSkillGif');
+      gif.src = gifPath;
+      gif.style.display = 'block';
+      gif.onerror = function() {
+        this.style.display = 'none';
+      };
+      gif.onload = function() {
+        this.style.display = 'block';
+      };
+
+      document.getElementById('skillModal').classList.add('active');
+    }
+
+    function closeSkillModal(event) {
+      if (event.target === document.getElementById('skillModal') || event.target.classList.contains('holo-skill-close')) {
+        document.getElementById('skillModal').classList.remove('active');
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.getElementById('skillModal').classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
